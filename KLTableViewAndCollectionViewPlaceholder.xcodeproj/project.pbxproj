@@ -14,6 +14,15 @@
 		247DF6571E5FC655005E0914 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 247DF6551E5FC655005E0914 /* Main.storyboard */; };
 		247DF6591E5FC655005E0914 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 247DF6581E5FC655005E0914 /* Assets.xcassets */; };
 		247DF65C1E5FC655005E0914 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 247DF65A1E5FC655005E0914 /* LaunchScreen.storyboard */; };
+		247DF6671E5FC724005E0914 /* KLUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 247DF6611E5FC724005E0914 /* KLUtility.h */; };
+		247DF6681E5FC724005E0914 /* KLUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 247DF6621E5FC724005E0914 /* KLUtility.m */; };
+		247DF6691E5FC724005E0914 /* KLUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 247DF6621E5FC724005E0914 /* KLUtility.m */; };
+		247DF66A1E5FC724005E0914 /* UICollectionView+KLCollectionViewPlaceholder.h in Headers */ = {isa = PBXBuildFile; fileRef = 247DF6631E5FC724005E0914 /* UICollectionView+KLCollectionViewPlaceholder.h */; };
+		247DF66B1E5FC724005E0914 /* UICollectionView+KLCollectionViewPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 247DF6641E5FC724005E0914 /* UICollectionView+KLCollectionViewPlaceholder.m */; };
+		247DF66C1E5FC724005E0914 /* UICollectionView+KLCollectionViewPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 247DF6641E5FC724005E0914 /* UICollectionView+KLCollectionViewPlaceholder.m */; };
+		247DF66D1E5FC724005E0914 /* UITableView+KLTableViewPlaceholder.h in Headers */ = {isa = PBXBuildFile; fileRef = 247DF6651E5FC724005E0914 /* UITableView+KLTableViewPlaceholder.h */; };
+		247DF66E1E5FC724005E0914 /* UITableView+KLTableViewPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 247DF6661E5FC724005E0914 /* UITableView+KLTableViewPlaceholder.m */; };
+		247DF66F1E5FC724005E0914 /* UITableView+KLTableViewPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 247DF6661E5FC724005E0914 /* UITableView+KLTableViewPlaceholder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +39,12 @@
 		247DF6581E5FC655005E0914 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		247DF65B1E5FC655005E0914 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		247DF65D1E5FC655005E0914 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		247DF6611E5FC724005E0914 /* KLUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLUtility.h; sourceTree = "<group>"; };
+		247DF6621E5FC724005E0914 /* KLUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLUtility.m; sourceTree = "<group>"; };
+		247DF6631E5FC724005E0914 /* UICollectionView+KLCollectionViewPlaceholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+KLCollectionViewPlaceholder.h"; sourceTree = "<group>"; };
+		247DF6641E5FC724005E0914 /* UICollectionView+KLCollectionViewPlaceholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+KLCollectionViewPlaceholder.m"; sourceTree = "<group>"; };
+		247DF6651E5FC724005E0914 /* UITableView+KLTableViewPlaceholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+KLTableViewPlaceholder.h"; sourceTree = "<group>"; };
+		247DF6661E5FC724005E0914 /* UITableView+KLTableViewPlaceholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+KLTableViewPlaceholder.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +87,12 @@
 			isa = PBXGroup;
 			children = (
 				247DF63E1E5FC5BA005E0914 /* KLTableViewAndCollectionViewPlaceholder.h */,
+				247DF6611E5FC724005E0914 /* KLUtility.h */,
+				247DF6621E5FC724005E0914 /* KLUtility.m */,
+				247DF6631E5FC724005E0914 /* UICollectionView+KLCollectionViewPlaceholder.h */,
+				247DF6641E5FC724005E0914 /* UICollectionView+KLCollectionViewPlaceholder.m */,
+				247DF6651E5FC724005E0914 /* UITableView+KLTableViewPlaceholder.h */,
+				247DF6661E5FC724005E0914 /* UITableView+KLTableViewPlaceholder.m */,
 				247DF63F1E5FC5BA005E0914 /* Info.plist */,
 			);
 			path = KLTableViewAndCollectionViewPlaceholder;
@@ -108,7 +129,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				247DF6671E5FC724005E0914 /* KLUtility.h in Headers */,
+				247DF66A1E5FC724005E0914 /* UICollectionView+KLCollectionViewPlaceholder.h in Headers */,
 				247DF6401E5FC5BA005E0914 /* KLTableViewAndCollectionViewPlaceholder.h in Headers */,
+				247DF66D1E5FC724005E0914 /* UITableView+KLTableViewPlaceholder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,6 +237,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				247DF66B1E5FC724005E0914 /* UICollectionView+KLCollectionViewPlaceholder.m in Sources */,
+				247DF66E1E5FC724005E0914 /* UITableView+KLTableViewPlaceholder.m in Sources */,
+				247DF6681E5FC724005E0914 /* KLUtility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,7 +248,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				247DF6541E5FC655005E0914 /* ViewController.m in Sources */,
+				247DF6691E5FC724005E0914 /* KLUtility.m in Sources */,
+				247DF66C1E5FC724005E0914 /* UICollectionView+KLCollectionViewPlaceholder.m in Sources */,
 				247DF6511E5FC655005E0914 /* AppDelegate.m in Sources */,
+				247DF66F1E5FC724005E0914 /* UITableView+KLTableViewPlaceholder.m in Sources */,
 				247DF64E1E5FC655005E0914 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
