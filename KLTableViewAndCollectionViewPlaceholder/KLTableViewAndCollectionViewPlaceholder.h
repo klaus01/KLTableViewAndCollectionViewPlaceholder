@@ -7,8 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UICollectionView+KLCollectionViewPlaceholder.h"
-#import "UITableView+KLTableViewPlaceholder.h"
 
 //! Project version number for KLTableViewAndCollectionViewPlaceholder.
 FOUNDATION_EXPORT double KLTableViewAndCollectionViewPlaceholderVersionNumber;
@@ -18,4 +16,6 @@ FOUNDATION_EXPORT const unsigned char KLTableViewAndCollectionViewPlaceholderVer
 
 // In this header, you should import all the public headers of your framework using statements like #import <KLTableViewAndCollectionViewPlaceholder/PublicHeader.h>
 
+#import <KLTableViewAndCollectionViewPlaceholder/UICollectionView+KLCollectionViewPlaceholder.h>
+#import <KLTableViewAndCollectionViewPlaceholder/UITableView+KLTableViewPlaceholder.h>
 
