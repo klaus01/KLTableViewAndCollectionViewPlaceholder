@@ -16,10 +16,10 @@
 		247DF6671E5FC724005E0914 /* KLUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 247DF6611E5FC724005E0914 /* KLUtility.h */; };
 		247DF6681E5FC724005E0914 /* KLUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 247DF6621E5FC724005E0914 /* KLUtility.m */; };
 		247DF6691E5FC724005E0914 /* KLUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 247DF6621E5FC724005E0914 /* KLUtility.m */; };
-		247DF66A1E5FC724005E0914 /* UICollectionView+KLCollectionViewPlaceholder.h in Headers */ = {isa = PBXBuildFile; fileRef = 247DF6631E5FC724005E0914 /* UICollectionView+KLCollectionViewPlaceholder.h */; };
+		247DF66A1E5FC724005E0914 /* UICollectionView+KLCollectionViewPlaceholder.h in Headers */ = {isa = PBXBuildFile; fileRef = 247DF6631E5FC724005E0914 /* UICollectionView+KLCollectionViewPlaceholder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		247DF66B1E5FC724005E0914 /* UICollectionView+KLCollectionViewPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 247DF6641E5FC724005E0914 /* UICollectionView+KLCollectionViewPlaceholder.m */; };
 		247DF66C1E5FC724005E0914 /* UICollectionView+KLCollectionViewPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 247DF6641E5FC724005E0914 /* UICollectionView+KLCollectionViewPlaceholder.m */; };
-		247DF66D1E5FC724005E0914 /* UITableView+KLTableViewPlaceholder.h in Headers */ = {isa = PBXBuildFile; fileRef = 247DF6651E5FC724005E0914 /* UITableView+KLTableViewPlaceholder.h */; };
+		247DF66D1E5FC724005E0914 /* UITableView+KLTableViewPlaceholder.h in Headers */ = {isa = PBXBuildFile; fileRef = 247DF6651E5FC724005E0914 /* UITableView+KLTableViewPlaceholder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		247DF66E1E5FC724005E0914 /* UITableView+KLTableViewPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 247DF6661E5FC724005E0914 /* UITableView+KLTableViewPlaceholder.m */; };
 		247DF66F1E5FC724005E0914 /* UITableView+KLTableViewPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 247DF6661E5FC724005E0914 /* UITableView+KLTableViewPlaceholder.m */; };
 		247DF6741E5FDA41005E0914 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 247DF6711E5FDA41005E0914 /* CollectionViewController.m */; };
@@ -136,8 +136,8 @@
 			files = (
 				247DF6671E5FC724005E0914 /* KLUtility.h in Headers */,
 				247DF66A1E5FC724005E0914 /* UICollectionView+KLCollectionViewPlaceholder.h in Headers */,
-				247DF6401E5FC5BA005E0914 /* KLTableViewAndCollectionViewPlaceholder.h in Headers */,
 				247DF66D1E5FC724005E0914 /* UITableView+KLTableViewPlaceholder.h in Headers */,
+				247DF6401E5FC5BA005E0914 /* KLTableViewAndCollectionViewPlaceholder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,6 +466,7 @@
 				247DF65F1E5FC655005E0914 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
