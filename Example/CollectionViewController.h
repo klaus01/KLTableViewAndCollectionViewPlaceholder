@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  CollectionViewController.h
 //  Example
 //
 //  Created by 柯磊 on 2017/2/24.
@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
+@interface CollectionViewController : UIViewController
 
 @end
-

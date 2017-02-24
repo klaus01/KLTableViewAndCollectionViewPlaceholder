@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  TableViewController.h
 //  Example
 //
 //  Created by 柯磊 on 2017/2/24.
@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface TableViewController : UIViewController
 
-@property (strong, nonatomic) UIWindow *window;
 
 @end
 
