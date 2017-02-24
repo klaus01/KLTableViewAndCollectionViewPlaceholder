@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UICollectionView+KLCollectionViewPlaceholder.h"
+#import "UITableView+KLTableViewPlaceholder.h"
 
 //! Project version number for KLTableViewAndCollectionViewPlaceholder.
 FOUNDATION_EXPORT double KLTableViewAndCollectionViewPlaceholderVersionNumber;
