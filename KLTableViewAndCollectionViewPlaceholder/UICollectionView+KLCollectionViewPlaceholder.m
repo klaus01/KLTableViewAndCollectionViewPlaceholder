@@ -41,8 +41,7 @@
         if (self.kl_hasHooked) {
             [self kl_restoreChangeDataMethods];
         }
-        [self.kl_placeholderView removeFromSuperview];
-        self.kl_placeholderView = nil;
+        [self kl_removePlaceholderView];
         self.kl_isBatchUpdates = NO;
     }
 }
@@ -101,6 +100,14 @@
     object_setClass(self, [[self class] superclass]);
 }
 
+- (void)kl_removePlaceholderView {
+    if (self.kl_placeholderView) {
+        [self.kl_placeholderView removeFromSuperview];
+        self.kl_placeholderView = nil;
+        self.kl_backToNormalBlock ? self.kl_backToNormalBlock(self) : nil;
+    }
+}
+
 - (void)kl_checkEmpty {
     if (self.kl_isBatchUpdates) {
         return;
@@ -140,11 +147,7 @@
             [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view(==superview)]|" options:0 metrics:nil views:views]];
         }
     } else {
-        if (self.kl_placeholderView) {
-            [self.kl_placeholderView removeFromSuperview];
-            self.kl_placeholderView = nil;
-            self.kl_backToNormalBlock ? self.kl_backToNormalBlock(self) : nil;
-        }
+        [self kl_removePlaceholderView];
     }
 }
 
