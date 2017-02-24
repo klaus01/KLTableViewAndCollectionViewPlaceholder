@@ -12,6 +12,17 @@
 
 @implementation UITableView (KLTableViewPlaceholder)
 
++ (void)load {
+    swizzleMethod(self, @selector(beginUpdates), @selector(kl_beginUpdates));
+    swizzleMethod(self, @selector(endUpdates), @selector(kl_endUpdates));
+    swizzleMethod(self, @selector(reloadData), @selector(kl_reloadData));
+    swizzleMethod(self, @selector(insertSections:withRowAnimation:), @selector(kl_insertSections:withRowAnimation:));
+    swizzleMethod(self, @selector(deleteSections:withRowAnimation:), @selector(kl_deleteSections:withRowAnimation:));
+    swizzleMethod(self, @selector(reloadSections:withRowAnimation:), @selector(kl_reloadSections:withRowAnimation:));
+    swizzleMethod(self, @selector(insertRowsAtIndexPaths:withRowAnimation:), @selector(kl_insertRowsAtIndexPaths:withRowAnimation:));
+    swizzleMethod(self, @selector(deleteRowsAtIndexPaths:withRowAnimation:), @selector(kl_deleteRowsAtIndexPaths:withRowAnimation:));
+}
+
 #pragma mark - public methods
 
 - (void)kl_placeholderViewBlock:(KLTableViewPlaceholderViewBlock _Nullable)placeholderViewBlock {
@@ -33,16 +44,8 @@
 - (void)setKl_placeholderViewBlock:(KLTableViewPlaceholderViewBlock)kl_placeholderViewBlock {
     objc_setAssociatedObject(self, @selector(kl_placeholderViewBlock), kl_placeholderViewBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
     
-    if (kl_placeholderViewBlock) {
-        if (!self.kl_hasHooked) {
-            [self kl_hookChangeDataMethods];
-        }
-    } else {
-        if (self.kl_hasHooked) {
-            [self kl_restoreChangeDataMethods];
-        }
+    if (kl_placeholderViewBlock == nil) {
         [self kl_removePlaceholderView];
-        self.kl_updateCount = 0;
     }
 }
 
@@ -73,35 +76,6 @@
 
 #pragma mark - private methods
 
-- (BOOL)kl_hasHooked {
-    return [NSStringFromClass([self class]) hasPrefix:kNewClassPrefix];
-}
-
-- (void)kl_hookChangeDataMethods {
-    Class baseClass = [self class];
-    
-    const char *newClassName = [kNewClassPrefix stringByAppendingString:NSStringFromClass(baseClass)].UTF8String;
-    Class newClass = objc_getClass(newClassName);
-    if (newClass == nil) {
-        newClass = objc_allocateClassPair(baseClass, newClassName, 0);
-        objc_registerClassPair(newClass);
-        
-        swizzleMethod(newClass, @selector(beginUpdates), @selector(kl_beginUpdates));
-        swizzleMethod(newClass, @selector(endUpdates), @selector(kl_endUpdates));
-        swizzleMethod(newClass, @selector(reloadData), @selector(kl_reloadData));
-        swizzleMethod(newClass, @selector(insertSections:withRowAnimation:), @selector(kl_insertSections:withRowAnimation:));
-        swizzleMethod(newClass, @selector(deleteSections:withRowAnimation:), @selector(kl_deleteSections:withRowAnimation:));
-        swizzleMethod(newClass, @selector(reloadSections:withRowAnimation:), @selector(kl_reloadSections:withRowAnimation:));
-        swizzleMethod(newClass, @selector(insertRowsAtIndexPaths:withRowAnimation:), @selector(kl_insertRowsAtIndexPaths:withRowAnimation:));
-        swizzleMethod(newClass, @selector(deleteRowsAtIndexPaths:withRowAnimation:), @selector(kl_deleteRowsAtIndexPaths:withRowAnimation:));
-    }
-    object_setClass(self, newClass);
-}
-
-- (void)kl_restoreChangeDataMethods {
-    object_setClass(self, [[self class] superclass]);
-}
-
 - (void)kl_removePlaceholderView {
     if (self.kl_placeholderView) {
         [self.kl_placeholderView removeFromSuperview];
@@ -111,7 +85,7 @@
 }
 
 - (void)kl_checkEmpty {
-    if (self.kl_updateCount) {
+    if (self.kl_updateCount > 0 || self.kl_placeholderViewBlock == nil) {
         return;
     }
     

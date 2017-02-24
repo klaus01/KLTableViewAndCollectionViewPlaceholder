@@ -12,6 +12,15 @@
 
 @implementation UICollectionView (KLCollectionViewPlaceholder)
 
++ (void)load {
+    swizzleMethod(self, @selector(reloadData), @selector(kl_reloadData));
+    swizzleMethod(self, @selector(insertSections:), @selector(kl_insertSections:));
+    swizzleMethod(self, @selector(deleteSections:), @selector(kl_deleteSections:));
+    swizzleMethod(self, @selector(reloadSections:), @selector(kl_reloadSections:));
+    swizzleMethod(self, @selector(insertItemsAtIndexPaths:), @selector(kl_insertItemsAtIndexPaths:));
+    swizzleMethod(self, @selector(deleteItemsAtIndexPaths:), @selector(kl_deleteItemsAtIndexPaths:));
+}
+
 #pragma mark - public methods
 
 - (void)kl_placeholderViewBlock:(KLCollectionViewPlaceholderViewBlock _Nullable)placeholderViewBlock {
@@ -33,16 +42,8 @@
 - (void)setKl_placeholderViewBlock:(KLCollectionViewPlaceholderViewBlock)kl_placeholderViewBlock {
     objc_setAssociatedObject(self, @selector(kl_placeholderViewBlock), kl_placeholderViewBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
     
-    if (kl_placeholderViewBlock) {
-        if (!self.kl_hasHooked) {
-            [self kl_hookChangeDataMethods];
-        }
-    } else {
-        if (self.kl_hasHooked) {
-            [self kl_restoreChangeDataMethods];
-        }
+    if (kl_placeholderViewBlock == nil) {
         [self kl_removePlaceholderView];
-        self.kl_isBatchUpdates = NO;
     }
 }
 
@@ -73,33 +74,6 @@
 
 #pragma mark - private methods
 
-- (BOOL)kl_hasHooked {
-    return [NSStringFromClass([self class]) hasPrefix:kNewClassPrefix];
-}
-
-- (void)kl_hookChangeDataMethods {
-    Class baseClass = [self class];
-    
-    const char *newClassName = [kNewClassPrefix stringByAppendingString:NSStringFromClass(baseClass)].UTF8String;
-    Class newClass = objc_getClass(newClassName);
-    if (newClass == nil) {
-        newClass = objc_allocateClassPair(baseClass, newClassName, 0);
-        objc_registerClassPair(newClass);
-        
-        swizzleMethod(newClass, @selector(reloadData), @selector(kl_reloadData));
-        swizzleMethod(newClass, @selector(insertSections:), @selector(kl_insertSections:));
-        swizzleMethod(newClass, @selector(deleteSections:), @selector(kl_deleteSections:));
-        swizzleMethod(newClass, @selector(reloadSections:), @selector(kl_reloadSections:));
-        swizzleMethod(newClass, @selector(insertItemsAtIndexPaths:), @selector(kl_insertItemsAtIndexPaths:));
-        swizzleMethod(newClass, @selector(deleteItemsAtIndexPaths:), @selector(kl_deleteItemsAtIndexPaths:));
-    }
-    object_setClass(self, newClass);
-}
-
-- (void)kl_restoreChangeDataMethods {
-    object_setClass(self, [[self class] superclass]);
-}
-
 - (void)kl_removePlaceholderView {
     if (self.kl_placeholderView) {
         [self.kl_placeholderView removeFromSuperview];
@@ -109,7 +83,7 @@
 }
 
 - (void)kl_checkEmpty {
-    if (self.kl_isBatchUpdates) {
+    if (self.kl_isBatchUpdates || self.kl_placeholderViewBlock == nil) {
         return;
     }
     
