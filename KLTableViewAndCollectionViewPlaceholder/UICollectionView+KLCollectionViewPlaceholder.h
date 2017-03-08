@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef UIView * _Nonnull (^KLCollectionViewPlaceholderViewBlock)(UICollectionView * _Nonnull collectionView);
+typedef UIView * _Nullable (^KLCollectionViewPlaceholderViewBlock)(UICollectionView * _Nonnull collectionView);
 typedef void (^KLCollectionViewBackToNormalBlock)(UICollectionView * _Nonnull collectionView);
 
 @interface UICollectionView (KLCollectionViewPlaceholder)

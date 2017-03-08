@@ -85,46 +85,44 @@
 }
 
 - (void)kl_checkEmpty {
-    if (self.kl_updateCount > 0 || self.kl_placeholderViewBlock == nil) {
-        return;
-    }
-    
-    BOOL isEmpty = YES;
-    
-    id<UITableViewDataSource> dataSource = self.dataSource;
-    NSInteger sections = 1;
-    if ([dataSource respondsToSelector:@selector(numberOfSectionsInTableView:)]) {
-        sections = [dataSource numberOfSectionsInTableView:self];
-    }
-    
-    for (NSInteger i = 0; i < sections; i++) {
-        NSInteger rows = [dataSource tableView:self numberOfRowsInSection:i];
-        if (rows) {
-            isEmpty = NO;
-            break;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (self.kl_updateCount > 0 || self.kl_placeholderViewBlock == nil) {
+            return;
         }
-    }
-    
-    if (isEmpty) {
-        UIView *placeholderView = self.kl_placeholderViewBlock ? self.kl_placeholderViewBlock(self) : nil;
-        if (!placeholderView) {
-            @throw [NSException exceptionWithName:NSGenericException
-                                           reason:@"You must return the placeholder view in kl_placeholderViewBlock."
-                                         userInfo:nil];
+        
+        BOOL isEmpty = YES;
+        
+        id<UITableViewDataSource> dataSource = self.dataSource;
+        NSInteger sections = 1;
+        if ([dataSource respondsToSelector:@selector(numberOfSectionsInTableView:)]) {
+            sections = [dataSource numberOfSectionsInTableView:self];
         }
-        if (self.kl_placeholderView != placeholderView) {
-            [self.kl_placeholderView removeFromSuperview];
-            self.kl_placeholderView = placeholderView;
-            
-            placeholderView.translatesAutoresizingMaskIntoConstraints = NO;
-            [self addSubview:placeholderView];
-            NSDictionary *views = @{@"view": placeholderView, @"superview": self};
-            [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view(==superview)]|" options:0 metrics:nil views:views]];
-            [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view(==superview)]|" options:0 metrics:nil views:views]];
+        
+        for (NSInteger i = 0; i < sections; i++) {
+            NSInteger rows = [dataSource tableView:self numberOfRowsInSection:i];
+            if (rows) {
+                isEmpty = NO;
+                break;
+            }
         }
-    } else {
-        [self kl_removePlaceholderView];
-    }
+        
+        if (isEmpty) {
+            UIView *placeholderView = self.kl_placeholderViewBlock ? self.kl_placeholderViewBlock(self) : nil;
+            if (self.kl_placeholderView != placeholderView) {
+                [self.kl_placeholderView removeFromSuperview];
+                self.kl_placeholderView = placeholderView;
+                if (placeholderView) {
+                    placeholderView.translatesAutoresizingMaskIntoConstraints = NO;
+                    [self addSubview:placeholderView];
+                    NSDictionary *views = @{@"view": placeholderView, @"superview": self};
+                    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view(==superview)]|" options:0 metrics:nil views:views]];
+                    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view(==superview)]|" options:0 metrics:nil views:views]];
+                }
+            }
+        } else {
+            [self kl_removePlaceholderView];
+        }
+    });
 }
 
 #pragma mark - hook methods

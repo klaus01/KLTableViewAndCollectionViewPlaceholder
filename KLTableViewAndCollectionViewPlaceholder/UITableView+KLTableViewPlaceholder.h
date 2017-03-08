@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef UIView * _Nonnull (^KLTableViewPlaceholderViewBlock)(UITableView * _Nonnull tableView);
+typedef UIView * _Nullable (^KLTableViewPlaceholderViewBlock)(UITableView * _Nonnull tableView);
 typedef void (^KLTableViewBackToNormalBlock)(UITableView * _Nonnull tableView);
 
 @interface UITableView (KLTableViewPlaceholder)
