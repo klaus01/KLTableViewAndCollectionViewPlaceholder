@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-typedef UIView * _Nullable (^KLTableViewPlaceholderViewBlock)(UITableView * _Nonnull tableView);
-typedef void (^KLTableViewBackToNormalBlock)(UITableView * _Nonnull tableView);
+typedef UIView * __nullable (^KLTableViewPlaceholderViewBlock)(UITableView * __nonnull tableView);
+typedef void (^KLTableViewBackToNormalBlock)(UITableView * __nonnull tableView);
 
 @interface UITableView (KLTableViewPlaceholder)
 
@@ -20,7 +20,7 @@ typedef void (^KLTableViewBackToNormalBlock)(UITableView * _Nonnull tableView);
  
  @param placeholderViewBlock Called when a placeholder needs to be displayed, returns a view.
  */
-- (void)kl_placeholderViewBlock:(KLTableViewPlaceholderViewBlock _Nullable)placeholderViewBlock;
+- (void)kl_placeholderViewBlock:(KLTableViewPlaceholderViewBlock __nullable)placeholderViewBlock;
 
 /**
  Called placeholderViewBlock when the data is empty, and backToNormalBlock when the data is not empty.
@@ -30,7 +30,7 @@ typedef void (^KLTableViewBackToNormalBlock)(UITableView * _Nonnull tableView);
  @param placeholderViewBlock Called when a placeholder needs to be displayed, returns a view.
  @param backToNormalBlock Called when there is data
  */
-- (void)kl_placeholderViewBlock:(KLTableViewPlaceholderViewBlock _Nullable)placeholderViewBlock
-              backToNormalBlock:(KLTableViewBackToNormalBlock _Nullable)backToNormalBlock;
+- (void)kl_placeholderViewBlock:(KLTableViewPlaceholderViewBlock __nullable)placeholderViewBlock
+              backToNormalBlock:(KLTableViewBackToNormalBlock __nullable)backToNormalBlock;
 
 @end

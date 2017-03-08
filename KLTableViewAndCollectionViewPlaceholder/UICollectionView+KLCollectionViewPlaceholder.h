@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-typedef UIView * _Nullable (^KLCollectionViewPlaceholderViewBlock)(UICollectionView * _Nonnull collectionView);
-typedef void (^KLCollectionViewBackToNormalBlock)(UICollectionView * _Nonnull collectionView);
+typedef UIView * __nullable (^KLCollectionViewPlaceholderViewBlock)(UICollectionView * __nonnull collectionView);
+typedef void (^KLCollectionViewBackToNormalBlock)(UICollectionView * __nonnull collectionView);
 
 @interface UICollectionView (KLCollectionViewPlaceholder)
 
@@ -20,7 +20,7 @@ typedef void (^KLCollectionViewBackToNormalBlock)(UICollectionView * _Nonnull co
 
  @param placeholderViewBlock Called when a placeholder needs to be displayed, returns a view.
  */
-- (void)kl_placeholderViewBlock:(KLCollectionViewPlaceholderViewBlock _Nullable)placeholderViewBlock;
+- (void)kl_placeholderViewBlock:(KLCollectionViewPlaceholderViewBlock __nullable)placeholderViewBlock;
 
 /**
  Called placeholderViewBlock when the data is empty, and backToNormalBlock when the data is not empty.
@@ -30,7 +30,7 @@ typedef void (^KLCollectionViewBackToNormalBlock)(UICollectionView * _Nonnull co
  @param placeholderViewBlock Called when a placeholder needs to be displayed, returns a view.
  @param backToNormalBlock Called when there is data
  */
-- (void)kl_placeholderViewBlock:(KLCollectionViewPlaceholderViewBlock _Nullable)placeholderViewBlock
-              backToNormalBlock:(KLCollectionViewBackToNormalBlock _Nullable)backToNormalBlock;
+- (void)kl_placeholderViewBlock:(KLCollectionViewPlaceholderViewBlock __nullable)placeholderViewBlock
+              backToNormalBlock:(KLCollectionViewBackToNormalBlock __nullable)backToNormalBlock;
 
 @end
